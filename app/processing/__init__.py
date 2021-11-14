@@ -1,5 +1,8 @@
+from .pipeline import get_queries
+
+
 def process_query(query: str) -> list[str]:
-    return query.split()
+    return get_queries(query, 5)
 
 
 def normalize_tag(tag: str) -> list[str]:
