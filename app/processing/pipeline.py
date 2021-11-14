@@ -17,6 +17,10 @@ with open("/server/pickles/embeddings.pickle", "rb") as f:
 with open("/server/pickles/documents.pickle", "rb") as f:
     documents = pickle.load(f)
 
+transformer = TransformerDocumentEmbeddings(
+    "sentence-transformers/stsb-xlm-r-multilingual", fine_tune=False
+)
+
 
 def get_tags(req: str) -> list[str]:
     max_tags = 10
@@ -43,9 +47,6 @@ def get_tags(req: str) -> list[str]:
 
 def get_queries(req: str, count: int) -> list[str]:
     # return count querries similar to request
-    transformer = TransformerDocumentEmbeddings(
-        "sentence-transformers/stsb-xlm-r-multilingual", fine_tune=False
-    )
 
     test_sentences = [Sentence(req)]
     transformer.embed(test_sentences)

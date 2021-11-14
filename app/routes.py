@@ -24,8 +24,8 @@ class TagsQueryRequest(BaseModel):
 async def tags_query(
     request: TagsQueryRequest, executor: Executor = Depends(depends_executor)
 ):
-    loop = asyncio.get_running_loop()
-    return await loop.run_in_executor(executor, process_query, request.query)
+    # TODO: run in subprocess
+    return process_query(request.query)
 
 
 class TagsNormalizeRequest(BaseModel):
