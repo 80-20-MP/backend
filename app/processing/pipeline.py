@@ -3,7 +3,6 @@ import random
 
 import flair
 import numpy as np
-import pandas as pd
 from flair.data import Sentence
 from flair.embeddings import TransformerDocumentEmbeddings
 from sklearn.metrics.pairwise import cosine_similarity
